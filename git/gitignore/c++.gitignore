@@ -1,32 +1,48 @@
-# Prerequisites
-*.d
+# ==============================================================================
+# C/C++ 项目 Git 忽略文件模板
+# ==============================================================================
+# 本文件定义了标准 C/C++ 项目中应该被 Git 忽略的文件和目录
+# 主要包括：编译中间文件、构建产物、预编译头等
+# ==============================================================================
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# 预编译头文件
+# 这些是编译器为了加速编译而生成的中间文件
+*.d         # GCC/Clang 生成的依赖文件
+*.gch       # GCC 预编译头文件 (Global Compiled Header)
+*.pch       # MSVC 预编译头文件 (Pre-Compiled Header)
 
-# Precompiled Headers
-*.gch
-*.pch
+# 编译生成的目标文件
+# 将源代码编译成机器码的中间产物
+*.slo       # Shared Library Object (Qt 工程使用)
+*.lo        # Libtool Object (libtool 工程使用)
+*.o         # GCC/Clang 编译生成的目标文件 (Object file)
+*.obj       # MSVC 编译生成的目标文件
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# 编译生成的动态链接库
+# 运行时需要的共享库文件
+*.so        # Linux/Unix 共享库 (Shared Object)
+*.dylib     # macOS 动态库 (Dynamic Library)
+*.dll       # Windows 动态链接库 (Dynamic Link Library)
 
-# Fortran module files
-*.mod
-*.smod
+# Fortran 模块文件
+# Fortran 语言生成的模块接口文件
+*.mod       # Fortran 模块文件
+*.smod      # Fortran 子模块文件
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# 编译生成的静态库
+# 静态链接的库文件
+*.lai       # Libtool 静态库接口文件
+*.la        # Libtool 库文件
+*.a         * nix/Unix 静态库 (Archive)
+*.lib       # Windows 静态库文件
 
-# Executables
-*.exe
-*.out
-*.app
+# 可执行文件
+# 编译链接后生成的程序文件
+*.exe       # Windows 可执行文件
+*.out       * nix/Unix 可执行文件
+*.app       # macOS 应用程序包
+
+# ==============================================================================
+# User ================================
+# 用户自定义的其他忽略文件
+# ==============================================================================

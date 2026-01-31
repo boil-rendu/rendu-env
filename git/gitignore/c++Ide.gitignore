@@ -1,129 +1,162 @@
-# Clion ================================
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# ==============================================================================
+# C/C++ IDE 综合忽略文件模板
+# ==============================================================================
+# 本文件综合了 JetBrains IDE、VSCode、C++ 编译、CMake 构建等多个方面的忽略规则
+# 适用于使用现代 IDE 开发的 C/C++ 项目
+# 参考：https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# ==============================================================================
 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+# ==============================================================================
+# JetBrains IDE 系列
+# ==============================================================================
+# 支持：IntelliJ IDEA, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm
 
-# Generated files
-.idea/**/contentModel.xml
+# 用户特定文件
+# 包含个人工作区、任务统计、字典等，不应提交
+.idea/**/workspace.xml           # 工作区配置（打开的文件、窗口布局等）
+.idea/**/tasks.xml               # 任务管理配置
+.idea/**/usage.statistics.xml     # 使用统计信息
+.idea/**/dictionaries            # 用户自定义字典
+.idea/**/shelf                   # 暂存区（Shelve 功能保存的更改）
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+# 自动生成的文件
+# 由 IDE 根据项目结构自动生成，会随项目变化
+.idea/**/contentModel.xml        # 项目内容模型
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+# 敏感或频繁变动的文件
+# 数据库连接信息、本地配置等
+.idea/**/dataSources/            # 数据源配置（包含数据库连接信息）
+.idea/**/dataSources.ids         # 数据源 ID
+.idea/**/dataSources.local.xml    # 本地数据源配置
+.idea/**/sqlDataSources.xml      # SQL 数据源配置
+.idea/**/dynamic.xml             # 动态配置
+.idea/**/uiDesigner.xml          # UI 设计器配置
+.idea/**/dbnavigator.xml         # 数据库导航器配置
 
-# Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
-# since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
+# Gradle 构建系统
+.idea/**/gradle.xml               # Gradle 项目配置
+.idea/**/libraries                # Gradle 依赖库列表
+
+# Gradle 和 Maven 自动导入
+# 使用自动导入功能时，模块文件会被频繁重建，建议忽略
+# 取消下面注释以忽略自动生成的模块文件
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
 # *.iml
 # *.ipr
 
-# CMake
+# CMake 构建系统
+# CLion 使用 CMake 时生成的构建目录
 cmake-build-*/
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+# Mongo Explorer 插件
+.idea/**/mongoSettings.xml       # MongoDB 连接配置
 
-# File-based project format
-*.iws
+# 基于文件的项目格式
+*.iws                            # IntelliJ IDEA 工作区文件
 
-# IntelliJ
-out/
+# IntelliJ 输出目录
+out/                            # 编译输出目录
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
+# mpeltonen/sbt-idea 插件
+.idea_modules/                  # SBT-IDEA 插件生成的目录
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+# JIRA 插件
+atlassian-ide-plugin.xml         # JIRA 集成配置
 
-# Cursive Clojure plugin
-.idea/replstate.xml
+# Cursive Clojure 插件
+.idea/replstate.xml             # Clojure REPL 状态
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
+# Crashlytics 插件（Android Studio 和 IntelliJ）
+# Firebase 崩溃分析相关配置
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Editor-based Rest Client
+# 基于 Editor 的 REST Client
+# 内置 HTTP 请求历史
 .idea/httpRequests
 
-# Android studio 3.1+ serialized cache file
+# Android Studio 3.1+ 序列化缓存文件
 .idea/caches/build_file_checksums.ser
 
-# vscode ================================
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# ==============================================================================
+# Visual Studio Code (VSCode)
+# ==============================================================================
+# 大部分 VSCode 配置文件都应忽略，但保留关键的团队共享配置
 
-# C++ ================================
- Prerequisites
-*.d
+.vscode/*                       # 忽略所有 VSCode 配置
+!.vscode/settings.json          # 保留工作区设置（可共享）
+!.vscode/tasks.json             # 保留任务配置
+!.vscode/launch.json            # 保留调试配置
+!.vscode/extensions.json        # 保留扩展推荐列表
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# ==============================================================================
+# C/C++ 编译文件
+# ==============================================================================
 
-# Precompiled Headers
-*.gch
-*.pch
+# 预编译头文件
+# 这些是编译器为了加速编译而生成的中间文件
+*.d         # GCC/Clang 生成的依赖文件
+*.gch       # GCC 预编译头文件 (Global Compiled Header)
+*.pch       # MSVC 预编译头文件 (Pre-Compiled Header)
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# 编译生成的目标文件
+# 将源代码编译成机器码的中间产物
+*.slo       # Shared Library Object (Qt 工程使用)
+*.lo        # Libtool Object (libtool 工程使用)
+*.o         # GCC/Clang 编译生成的目标文件 (Object file)
+*.obj       # MSVC 编译生成的目标文件
 
-# Fortran module files
-*.mod
-*.smod
+# 编译生成的动态链接库
+# 运行时需要的共享库文件
+*.so        # Linux/Unix 共享库 (Shared Object)
+*.dylib     # macOS 动态库 (Dynamic Library)
+*.dll       # Windows 动态链接库 (Dynamic Link Library)
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Fortran 模块文件
+# Fortran 语言生成的模块接口文件
+*.mod       # Fortran 模块文件
+*.smod      # Fortran 子模块文件
 
-# Executables
-*.exe
-*.out
-*.app
+# 编译生成的静态库
+# 静态链接的库文件
+*.lai       # Libtool 静态库接口文件
+*.la        # Libtool 库文件
+*.a         * nix/Unix 静态库 (Archive)
+*.lib       # Windows 静态库文件
 
+# 可执行文件
+# 编译链接后生成的程序文件
+*.exe       # Windows 可执行文件
+*.out       * nix/Unix 可执行文件
+*.app       # macOS 应用程序包
 
-# CMake ================================
-bin/
-build/
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
+# ==============================================================================
+# CMake 构建系统
+# ==============================================================================
 
+# 构建输出目录
+bin/                              # 二进制输出目录
+build/                            # 构建输出目录（常用目录名）
+
+# CMake 用户配置
+CMakeLists.txt.user               # IDE 生成的用户配置
+CMakeCache.txt                    # CMake 缓存文件
+CMakeFiles                        # CMake 内部文件目录
+CMakeScripts                      # CMake 脚本目录
+Testing                           # 测试相关文件
+
+# CMake 生成的构建系统文件
+Makefile                          # 生成的 Makefile
+cmake_install.cmake               # 安装规则文件
+install_manifest.txt              # 安装清单
+compile_commands.json             # 编译命令数据库（用于 IDE）
+CTestTestfile.cmake               # CTest 测试文件
+
+# ==============================================================================
 # User ================================
 # 用户自定义的其他忽略文件
-
+# ==============================================================================
